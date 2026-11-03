@@ -1,0 +1,10 @@
+// config/notquests/quests/reward_tables/starter_loot.snbt
+{
+	id: "starter_loot",
+	title: "Starter Loot",
+	rewards: [
+		{ item: "minecraft:bread", count: 6, weight: 10 },   // higher weight = more common
+		{ item: "minecraft:iron_ingot", count: 3, weight: 5 },
+		{ item: "minecraft:diamond", weight: 1 }
+	]
+}

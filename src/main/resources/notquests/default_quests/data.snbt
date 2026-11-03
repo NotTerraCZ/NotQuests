@@ -1,0 +1,9 @@
+// config/notquests/quests/data.snbt
+{
+	title: "My Pack Quests",
+	icon: "minecraft:writable_book",
+	give_book_on_first_join: true,
+	chapter_groups: [
+		{ id: "group_main", title: "Main Story", icon: "minecraft:nether_star" }
+	]
+}

@@ -1,0 +1,60 @@
+// config/notquests/quests/chapters/the_beginning.snbt
+{
+	id: "begin",                        // unique id, any text
+	title: "&aThe Beginning",           // & = color codes
+	icon: "minecraft:oak_sapling",
+	group: "group_main",                // group id from data.snbt
+	quests: [
+		{
+			id: "begin_welcome",
+			title: "&eWelcome!",
+			description: ["Welcome to the pack!", "Click the checkmark, then claim your reward."],
+			x: 0, y: 0,                     // position on the map (x = right, y = down)
+			size: 1.5,
+			shape: "gear",
+			tasks: [ { type: "checkmark" } ],
+			rewards: [ { type: "item", item: "minecraft:bread", count: 8 } ]
+		},
+		{
+			id: "begin_wood",
+			title: "Timber!",
+			x: 2.5, y: -1.25,
+			dependencies: ["begin_welcome"], // unlocks after these quests
+			tasks: [ { type: "item", item_tag: "minecraft:logs", count: 16 } ],
+			rewards: [ { type: "xp", xp: 50 } ]
+		},
+		{
+			id: "begin_stone",
+			title: "Stone Age",
+			x: 5, y: -1.25,
+			dependencies: ["begin_wood"],
+			tasks: [ { type: "item", item: "minecraft:cobblestone", count: 32, consume_items: true } ],
+			rewards: [ { type: "random", table_id: "starter_loot" } ]
+		},
+		{
+			id: "begin_hunter",
+			title: "Monster Hunter",
+			x: 2.5, y: 1.25,
+			dependencies: ["begin_welcome"],
+			tasks: [ { type: "kill", entity: "minecraft:zombie", value: 5 } ],
+			rewards: [ { type: "xp_levels", xp_levels: 3 } ]
+		},
+		{
+			id: "begin_iron",
+			title: "Iron Age",
+			x: 7.5, y: 0,
+			dependencies: ["begin_stone", "begin_hunter"],
+			tasks: [ { type: "item", item_tag: "c:ingots/iron", count: 8 } ],
+			rewards: [ { type: "command", title: "Iron Pickaxe", icon: "minecraft:iron_pickaxe", command: "/give {p} minecraft:iron_pickaxe" } ]
+		},
+		{
+			id: "begin_nether",
+			title: "Into the Nether",
+			x: 10, y: 0,
+			size: 1.25,
+			dependencies: ["begin_iron"],
+			tasks: [ { type: "dimension", dimension: "minecraft:the_nether" } ],
+			rewards: [ { type: "choice", table_id: "starter_loot" } ]
+		}
+	]
+}
